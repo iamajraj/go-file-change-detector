@@ -7,17 +7,24 @@ import (
 	"time"
 )
 
-// var directory string
-// var commandExec string
+var directory string
 
-// func parseArgs(arguments []string) {
-
-// }
+func parseArgs(arguments []string) {
+	for i, arg := range arguments {
+		idx := i + 1
+		if arg == "-d" {
+			directory = arguments[idx]
+		}
+	}
+}
 
 func main() {
-	// parseArgs(os.Args)
-
-	directory := "detectme"
+	if len(os.Args[1:]) > 1 {
+		parseArgs(os.Args[1:])
+	} else {
+		fmt.Println("Please provide the directory e.g -d <path>")
+		os.Exit(0)
+	}
 
 	var initialStat []time.Time
 	var nextStat []time.Time
@@ -26,13 +33,13 @@ func main() {
 	fmt.Printf("Watching for changes in `%s`\n", directory)
 
 	for {
-		time.Sleep(2 * time.Second)
+		time.Sleep(1 * time.Second)
 		nextStat = nil
 		getDirectoryModifiedTime(&nextStat, directory)
 
 		for i := 0; i < len(initialStat); i++ {
 			if !initialStat[i].Equal(nextStat[i]) {
-				fmt.Println("File has changed")
+				fmt.Println("The File has changed")
 				initialStat = nextStat
 				break
 			}
