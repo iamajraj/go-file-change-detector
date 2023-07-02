@@ -2,9 +2,7 @@
 
 ### file changes detector inside directory recursively
 
----
 
-example: go run . -d detectme
-structure: <program> -d <directory>
+##### example: go run . -d detectme
+##### structure: <program> -d <directory>
 
----
