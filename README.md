@@ -3,5 +3,5 @@
 ### file changes detector inside directory recursively
 
 
-##### example: go run . -d detectme
+example: go run . -d detectme
 
