@@ -4,5 +4,4 @@
 
 
 ##### example: go run . -d detectme
-##### structure: program -d <directory>
 
